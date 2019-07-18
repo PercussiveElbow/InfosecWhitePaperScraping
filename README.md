@@ -7,7 +7,7 @@ Checklist:
 - [X] MWR
 - [ ] Sans
 - [X] Infosec Insitute 
-- [ ] FSecure
+- [X] FSecure
 - [ ] Azure
 - [ ] AWS
 - [ ] SpectreOps
