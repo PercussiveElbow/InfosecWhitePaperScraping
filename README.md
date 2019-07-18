@@ -6,7 +6,7 @@ Checklist:
 - [X] Mdsec
 - [X] MWR
 - [ ] Sans
-- [ ] Infosec Insitute 
+- [X] Infosec Insitute 
 - [ ] FSecure
 - [ ] Azure
 - [ ] AWS
