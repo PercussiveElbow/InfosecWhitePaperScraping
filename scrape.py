@@ -8,9 +8,10 @@ headers = {'User-Agent': "I'm scraping your whitepapers because they're good stu
 # Base URLs
 mwr_base = "https://labs.mwrinfosecurity.com"
 mdsec_base = "https://www.mdsec.co.uk"
+spectreops_base = "https://specterops.io"
+infosec_insitute_base = "https://www.infosecinstitute.com/white-papers/"
 
 def mwr():
-    make_dir("mwr")
     print("Scraping MWR")
     for page in mwr_get_all_pages(mwr_base+"/publications/"):
         pageSoup = BeautifulSoup(requests.get(page,headers=headers).text,"lxml")
@@ -26,7 +27,7 @@ def mwr():
                 metadata_text=""
                 for element in articleSoup.find("div",{"class": "blog-post"}).findAll('p'):
                     metadata_text += '\n' + ''.join(element.findAll(text = True))
-                file_download(mwr_base + file_link , "mwr/" + dir_name ,file_link,metadata_text)
+                file_download(mwr_base + file_link , "Whitepapers/MWR/" + dir_name ,file_link,metadata_text)
             sleep(5) # Being polite
     print("Finished scraping MWR")
 
@@ -61,9 +62,24 @@ def mdsec():
                         metadata = ""
                         # if paper.next_sibling:
                         #     print("Next sibling: s" + paper.next_sibling.find("p")
-                        file_download(download_url,"mdsec/" + title, download_url, metadata)
+                        file_download(download_url,"Whitepapers/MDSec/" + title, download_url, metadata)
                 sleep(5)
     print("Finished MDSec")
+
+def infosec_insitute():
+    print("Scraping InfoSecInstitute")
+    pageSoup = BeautifulSoup(requests.get(infosec_insitute_base,headers=headers).text,"lxml")
+    docs = pageSoup.findAll("a",{"class": "download-document"})
+    for doc in docs:
+        download_url = doc["href"]
+        file_download(download_url,"Whitepapers/InfoSecInstitute/"+doc.find("h4").text,download_url,doc.find("p").text)
+        sleep(5)
+    print("Finished InfoSecInstitute")
+
+def spectreops():
+    print("Scraping SpectreOps")
+    pageSoup = BeautifulSoup(requests.get(spectreops_base + "/resources/research-and-development",headers=headers).text,"lxml")
+    spectre_ops = pageSoup.find("div", {"class": "row justify-content-center"})
 
 # probs need to use selenium here to avoid captchas blocking everything
 def ncc():
@@ -73,7 +89,7 @@ def ncc():
 def file_download(url, dir_name, file_name,metadata):
     make_dir(dir_name)
     print("Found article: " + dir_name)
-    print("Found file link: " + url)
+    print("Downloading file from: " + url)
     file_name = file_name.replace("\\","").replace("..","")
     r = requests.get(url, allow_redirects=True,headers=headers)
     local_file_name = file_name.split("/")[-1]
@@ -85,5 +101,7 @@ def make_dir(directory):
         os.makedirs(directory)
 
 ## Scraping time
+print("Beginning scraping: ")
 mwr()
 mdsec()
+infosec_insitute()
