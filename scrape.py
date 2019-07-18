@@ -94,6 +94,8 @@ def fsecure():
         if doc.find("p",{"class": "tight p-b-xs-1 p-b-sm-1"}):
             metadata = doc.find("p",{"class": "tight p-b-xs-1 p-b-sm-1"}).text
         file_download(download_url,"Whitepapers/FSecure/"+ doc.find("h4").text, download_url,metadata)
+        sleep(5)
+    print("Finished InfoSecInstitute")
 
 def spectreops():
     print("Scraping SpectreOps")
