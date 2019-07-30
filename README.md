@@ -10,5 +10,5 @@ Checklist:
 - [X] FSecure
 - [ ] Azure
 - [ ] AWS
-- [ ] SpectreOps
+- [ ] SpecterOps
 - [ ] ExploitDB
