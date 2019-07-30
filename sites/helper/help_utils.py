@@ -15,6 +15,6 @@ def file_download(url, dir_name, file_name,metadata):
     open(dir_name + "/" + "whitepaper_metadata","w").write(metadata)
 
 def make_dir(directory):
-    directory = directory.replace("/"," ").replace("\"," ")
+    directory = directory.replace("/"," ").replace("\\"," ")
     if not os.path.exists(directory):
         os.makedirs(directory)
