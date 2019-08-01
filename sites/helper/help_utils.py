@@ -1,13 +1,14 @@
-import os, requests
+import os, requests,re
 
 HEADERS = {'User-Agent': "I'm scraping your whitepapers because they're good stuff ty xx"}
 
 ## Generic methods below
 def file_download(url, dir_name, file_name,metadata):
+    dir_name = sanitize(dir_name)
+    file_name = sanitize(file_name)
     make_dir(dir_name)
-    print("Found article: " + dir_name)
-    print("Downloading file from: " + url)
-    file_name = file_name.replace("\\","").replace("..","")
+    print("Found whitepaper: " + filename)
+    print("Downloading file: " + url)
     r = requests.get(url, allow_redirects=True,headers=HEADERS)
     local_file_name = file_name.split("/")[-1]
     local_file_name.replace("..","").replace("/","")
@@ -15,6 +16,10 @@ def file_download(url, dir_name, file_name,metadata):
     open(dir_name + "/" + "whitepaper_metadata","w").write(metadata)
 
 def make_dir(directory):
-    directory = directory.replace("\\"," ")
     if not os.path.exists(directory):
         os.makedirs(directory)
+
+def sanitize(unsanitized):
+       # return unsanitized.replace("\\"," ").replace(":"," ").replace("..","").replace("").replace(","," ").replace("|", " ").replace("="," ").replace("[")
+       sanitized =  re.sub('[;|:|\||\\|,|[|\]|"|*|?]|<|>', ' ', unsanitized)
+       return re.sub('\s+', ' ', sanitized      ).strip()

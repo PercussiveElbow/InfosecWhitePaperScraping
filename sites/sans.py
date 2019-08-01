@@ -4,10 +4,15 @@ from sites.helper.help_utils import *
 
 # Base URLs
 sans_pentest_base = "https://pen-testing.sans.org"
+sans_cybdef_base = "https://cyber-defense.sans.org"
 
 def sans():
-    print("Scraping SANS")
-    pageSoup = BeautifulSoup(requests.get(sans_pentest_base + "/resources/whitepapers",headers=HEADERS).text, "lxml")
+    sans_download(sans_cybdef_base)
+    sans_download(sans_pentest_base)
+
+def sans_download(url):
+    print("Scraping SANS " + url)
+    pageSoup = BeautifulSoup(requests.get(url + "/resources/whitepapers",headers=HEADERS).text, "lxml")
     docs = pageSoup.findAll("table",{"class" :"clear"})
     for doc in docs:
         rows = doc.find_all("tr", {"class" : "table-row"})
