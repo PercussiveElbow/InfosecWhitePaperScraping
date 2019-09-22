@@ -6,7 +6,7 @@ mwr_base = "https://labs.mwrinfosecurity.com"
 
 def mwr():
     print("Scraping MWR")
-    for page in mwr_get_all_pages(mwr_base+"/publications/"):
+    for page in mwr_get_all_pages(mwr_base+"/archive/"):
         pageSoup = BeautifulSoup(requests.get(page,headers=HEADERS).text,"lxml")
         for articlePage in pageSoup.findAll("a", {"class": "col4 box-wrap"}):
             articleLink = articlePage['href']

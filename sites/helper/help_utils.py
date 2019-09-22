@@ -7,7 +7,7 @@ def file_download(url, dir_name, file_name,metadata):
     dir_name = sanitize(dir_name)
     file_name = sanitize(file_name)
     make_dir(dir_name)
-    print("Found whitepaper: " + filename)
+    print("Found whitepaper: " + file_name)
     print("Downloading file: " + url)
     r = requests.get(url, allow_redirects=True,headers=HEADERS)
     local_file_name = file_name.split("/")[-1]
