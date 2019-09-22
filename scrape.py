@@ -11,5 +11,5 @@ mwr()
 mdsec()
 infosec_insitute()
 fsecure()
-specterops
+#specterops
 sans()
