@@ -21,7 +21,6 @@ def mwr():
                 for element in articleSoup.find("div",{"class": "blog-post"}).findAll('p'):
                     metadata_text += '\n' + ''.join(element.findAll(text = True))
                 file_download(mwr_base + file_link , "Whitepapers/MWR/" + dir_name ,file_link,metadata_text)
-            time.sleep(5) # Being polite
     print("Finished scraping MWR")
 
 def mwr_get_all_pages(link):

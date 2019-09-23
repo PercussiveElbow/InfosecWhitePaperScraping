@@ -11,5 +11,4 @@ def infosec_insitute():
     for doc in docs:
         download_url = doc["href"]
         file_download(download_url,"Whitepapers/InfoSecInstitute/" +doc.find("h4").text[1:] ,download_url,doc.find("p").text)
-        time.sleep(5)
     print("Finished InfoSecInstitute")

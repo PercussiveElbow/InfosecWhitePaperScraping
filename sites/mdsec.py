@@ -25,5 +25,4 @@ def mdsec():
                         # if paper.next_sibling:
                         #     print("Next sibling: s" + paper.next_sibling.find("p")
                         file_download(download_url,"Whitepapers/MDSec/" + title, download_url, metadata)
-                time.sleep(5)
     print("Finished MDSec")

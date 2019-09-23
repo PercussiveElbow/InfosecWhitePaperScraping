@@ -16,5 +16,4 @@ def fsecure():
             for paras in doc.findAll('p'):
                 metadata += paras.text + "\n"
         file_download(download_url,"Whitepapers/FSecure/"+ doc.find("h3").text.strip(), download_url,metadata)
-        time.sleep(5)
     print("Finished FSecure")

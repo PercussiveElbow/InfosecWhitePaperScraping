@@ -26,5 +26,4 @@ def sans_download(url):
             if row.find("td",{"class": "table_data table_data_name"}):
                 metadata += row.find("td",{"class": "table_data table_data_name"}).text + "\n"
             file_download(download_url,"Whitepapers/SANS/" + title , download_url,metadata)
-            time.sleep(5)
     print("Finished SANS")
