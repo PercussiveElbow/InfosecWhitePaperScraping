@@ -18,7 +18,7 @@ python scrape.py
 - [X] Infosec Insitute 
 - [X] FSecure
 - [X] SpecterOps
-- [X] Symantec
+- [X] Symantec (now Broadcom)
 - [ ] Rapid7
 - [ ] Context 
 - [ ] AWS

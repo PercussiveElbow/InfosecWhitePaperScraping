@@ -1,4 +1,4 @@
-from sites.mwr import *
+from sites.fsecure_labs import *
 from sites.mdsec import *
 from sites.infosec_institute import *
 from sites.fsecure import *
@@ -8,10 +8,10 @@ from sites.symantec import *
 
 ## Scraping time
 print("Beginning scraping: ")
-mwr()
+fsecure_labs()
 mdsec()
-infosec_insitute()
+#infosec_insitute() borked
 fsecure()
 specterops()
 sans()
-symantec()
+#symantec() borked

@@ -23,4 +23,4 @@ def make_dir(directory):
 def sanitize(unsanitized):
     # return unsanitized.replace("\\"," ").replace(":"," ").replace("..","").replace("").replace(","," ").replace("|", " ").replace("="," ").replace("[")
     sanitized =  re.sub('[;|:|\||\\|,|[|\]|"|*|?]|<|>', ' ', unsanitized)
-    return re.sub('\s+', ' ', sanitized      ).strip()
+    return re.sub('\s+', ' ', sanitized).strip()
